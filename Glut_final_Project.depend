@@ -243,3 +243,10 @@
 	<_mingw.h>
 	<stddef.h>
 
+1609622706 source:e:\cg_project\opengl_project\main.cpp
+	<cstdio>
+	<GL/gl.h>
+	<GL/glut.h>
+	<math.h>
+	<cstdio>
+

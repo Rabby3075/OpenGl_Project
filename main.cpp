@@ -49,6 +49,26 @@ void Background()
     glVertex2f(1.0,1.0);
     glEnd();
 }
+
+
+/*void Bird()
+{
+    //Bird
+    glBegin(GL_LINES);
+    glColor3ub(0, 0 , 0);
+    glVertex2f(.9f, 0.89f);
+    glVertex2f(0.95f, 0.94f);
+
+    glVertex2f(.7f, 0.87f);
+    glVertex2f(0.75f, 0.92f);
+
+    glVertex2f(.4f, 0.90f);
+    glVertex2f(0.45f, 0.95f);
+    glEnd();
+
+}*/
+
+
 void Cbuilding()
 {
     //Circle Start
@@ -174,6 +194,7 @@ glVertex2f(-0.6f, 0.31f);
 glVertex2f(-0.55f, 0.31f);
 glVertex2f(-0.55f, 0.44f);
     glEnd();
+
 
      glBegin(GL_LINES);
      glColor3ub(0, 255, 0);
@@ -302,6 +323,33 @@ glVertex2f(-0.58,0.53);
 glEnd();
 
 }
+void Sun(){
+
+glColor3ub(252, 196, 0);
+
+int i;
+
+    GLfloat x=-0.10f; GLfloat y=0.90f; GLfloat radius =.07f;
+int triangleAmount = 100;
+  GLfloat twicePi = 2.0f * PI;
+    glBegin(GL_TRIANGLE_FAN);
+
+        glVertex2f(x, y);
+
+        for(i = 0; i <= triangleAmount;i++) {
+
+            glVertex2f(
+
+                    x + (radius * cos(i *  twicePi / triangleAmount)),
+
+                y + (radius * sin(i * twicePi / triangleAmount))
+
+            );
+
+        }
+glEnd();
+
+}
 void Dbuilding()
 {
     //Building
@@ -312,6 +360,7 @@ void Dbuilding()
         glVertex2f(0.9,0.8);
         glVertex2f(-0.1,0.8);
         glEnd();
+
 
         //left stand
           glBegin(GL_QUADS);
@@ -339,6 +388,40 @@ void Dbuilding()
         glVertex2f(0.84,0.3);
         glVertex2f(0.84,0.4);
         glVertex2f(0.8,0.4);
+        glEnd();
+
+        // Left Black
+        glBegin(GL_QUADS);
+        glColor3ub(0,0,0);
+        glVertex2f(0.40,0.3);
+        glVertex2f(0.04,0.3);
+        glVertex2f(0.04,0.4);
+        glVertex2f(0.40,0.4);
+        glEnd();
+
+        //Right Black
+        glBegin(GL_QUADS);
+        glColor3ub(0,0,0);
+        glVertex2f(0.80,0.3);
+        glVertex2f(0.44,0.3);
+        glVertex2f(0.44,0.4);
+        glVertex2f(0.80,0.4);
+        glEnd();
+
+        glBegin(GL_QUADS);
+        glColor3ub(13,208,219);
+        glVertex2f(0.60,0.01);
+        glVertex2f(0.65,0.01);
+        glVertex2f(0.65,0.4);
+        glVertex2f(0.60,0.4);
+        glEnd();
+
+        glBegin(GL_QUADS);
+        glColor3ub(13,208,219);
+        glVertex2f(0.20,0.01);
+        glVertex2f(0.25,0.01);
+        glVertex2f(0.25,0.4);
+        glVertex2f(0.20,0.4);
         glEnd();
 
         //Line1
@@ -641,7 +724,7 @@ void Road()
 {
     //Create Road
 glBegin(GL_QUADS);
-    glColor3ub(255, 255, 255);
+    glColor3ub(192, 192, 192);
     glVertex2f(-1.0f,-0.5f);
     glVertex2f(1.0f,-0.5f);
     glVertex2f(1.0f,0.3f);
@@ -723,6 +806,23 @@ void Car(){
       glVertex2f( -0.4f,  0.2f);
 
    glEnd();
+
+   glBegin(GL_QUADS);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-.6,.1);
+    glVertex2f(-0.5,.1);
+    glVertex2f(-0.5,0.17);
+    glVertex2f(-.6,0.17);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-.66,.1);
+    glVertex2f(-0.75,.1);
+    glVertex2f(-0.75,0.17);
+    glVertex2f(-.66,0.17);
+    glEnd();
+
    //wheel 1.1
       glColor3ub(204, 0, 0);
 
@@ -778,7 +878,9 @@ void display() {
    glClear(GL_COLOR_BUFFER_BIT);
    glPushMatrix();
   Background();
+  //Bird();
   Cbuilding();
+  Sun();
 Dbuilding();
 Road();
 CrossLine();
