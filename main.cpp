@@ -8,6 +8,11 @@
 GLfloat position = 0.0f;
 GLfloat speed = 0.0f;
 
+GLfloat position1 = 0.0f;
+GLfloat speed1 = 0.0f;
+
+GLfloat position2 = 0.0f;
+GLfloat speed2 = 0.0f;
 void update(int value) {
 
     if(position >1.0)
@@ -19,6 +24,19 @@ void update(int value) {
 
 
 	glutTimerFunc(100, update, 0);
+}
+
+void update2(int value2) {
+
+    if(position2 >1.0)
+        position2 = -1.0f;
+
+    position2 += speed2;
+
+	glutPostRedisplay();
+
+
+	glutTimerFunc(100, update2, 0);
 }
 void Background()
 {
@@ -646,10 +664,51 @@ glBegin(GL_QUADS);
     glVertex2f(1.0f,-0.47f);
     glVertex2f(-1.0f,-0.47f);
     glEnd();
+
+    //Middle lane
+    glLineWidth(7.5);
+    glBegin(GL_LINES);
+    glColor3ub(255,0,127);
+    glVertex2f(-1.0f,-0.17f);
+    glVertex2f(-0.8f,-0.17f);
+
+    glEnd();
+
+     glLineWidth(7.5);
+    glBegin(GL_LINES);
+    glColor3ub(255,0,127);
+    glVertex2f(-0.4f,-0.17f);
+    glVertex2f(-0.6f,-0.17f);
+
+    glEnd();
+
+    glLineWidth(7.5);
+    glBegin(GL_LINES);
+    glColor3ub(255,0,127);
+    glVertex2f(-0.0f,-0.17f);
+    glVertex2f(-0.2f,-0.17f);
+
+    glEnd();
+
+    glLineWidth(7.5);
+    glBegin(GL_LINES);
+    glColor3ub(255,0,127);
+    glVertex2f(0.2f,-0.17f);
+    glVertex2f(0.4f,-0.17f);
+
+    glEnd();
+
+    glLineWidth(7.5);
+    glBegin(GL_LINES);
+    glColor3ub(255,0,127);
+    glVertex2f(0.8f,-0.17f);
+    glVertex2f(0.6f,-0.17f);
+
+    glEnd();
 }
 void Car(){
     //Car1 body
-    //glTranslatef(position,0.0f, 0.0f);
+    glTranslatef(position2,0.0f, 0.0f);
    glBegin(GL_QUADS);
      glColor3ub(0,0,255);
       glVertex2f(-0.8f, 0.0f);
@@ -688,6 +747,31 @@ int triangleAmount4 = 100;
 
         }
 glEnd();
+//wheel 1.2
+glColor3ub(204, 0, 0);
+
+int i5;
+
+    GLfloat x5=-0.5f; GLfloat y5=0.0f; GLfloat radius5 =.03f;
+int triangleAmount5 = 100;
+  GLfloat twicePi5 = 2.0f * PI;
+    glBegin(GL_TRIANGLE_FAN);
+
+        glVertex2f(x5, y5);
+
+        for(i5 = 0; i5 <= triangleAmount5;i5++) {
+
+            glVertex2f(
+
+                    x5 + (radius5 * cos(i5 *  twicePi5 / triangleAmount5)),
+
+                y5 + (radius5 * sin(i5 * twicePi5 / triangleAmount5))
+
+            );
+
+        }
+glEnd();
+
 }
 void display() {
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -718,9 +802,11 @@ void handleKeypress(unsigned char key, int x, int y) {
 	switch (key) {
 case 'a':
     speed = 0.0f;
+    speed2 = 0.0f;
     break;
 case 'w':
     speed = 0.1f;
+    speed2 = 0.1f;
     break;
 glutPostRedisplay();
 	}}
@@ -735,6 +821,8 @@ int main(int argc, char** argv) {
 
 
    glutTimerFunc(100, update, 0);
+
+   glutTimerFunc(100, update2, 0);
    glutKeyboardFunc(handleKeypress);
    glutMouseFunc(handleMouse);
 
