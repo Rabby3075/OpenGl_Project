@@ -657,7 +657,13 @@ void Car(){
       glVertex2f( -0.4f,  0.2f);
       glVertex2f(-0.8f,  0.2f);
    glEnd();
+  glBegin(GL_TRIANGLES);
+     glColor3ub(0,255,0);
+      glVertex2f(-0.4f, 0.0f);
+      glVertex2f( -0.3f, 0.1f);
+      glVertex2f( -0.4f,  0.2f);
 
+   glEnd();
    //wheel 1.1
       glColor3ub(204, 0, 0);
 
