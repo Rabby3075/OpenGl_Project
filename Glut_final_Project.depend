@@ -1,7 +1,7 @@
 # depslib dependency file v1.0
-1609526726 source:f:\codeblocks\glut_final_project\main.cpp
-	<windows.h>
-	<GL/glut.h>
+1609570550 source:f:\codeblocks\glut_final_project\main.cpp
+	<cstdio>
+	<GL/gl.h>
 	<GL/glut.h>
 	<math.h>
 	<cstdio>
