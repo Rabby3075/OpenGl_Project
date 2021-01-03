@@ -250,3 +250,10 @@
 	<math.h>
 	<cstdio>
 
+1609626028 source:f:\codeblocks\glut_final_project\opengl_project\main.cpp
+	<cstdio>
+	<GL/gl.h>
+	<GL/glut.h>
+	<math.h>
+	<cstdio>
+

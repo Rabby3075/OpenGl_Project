@@ -8,8 +8,8 @@
 GLfloat position = 0.0f;
 GLfloat speed = 0.0f;
 
-GLfloat position1 = 0.0f;
-GLfloat speed1 = 0.0f;
+GLfloat position1 = 0.1f;
+GLfloat speed1 = 0.1f;
 
 GLfloat position2 = 0.0f;
 GLfloat speed2 = 0.0f;
@@ -51,22 +51,27 @@ void Background()
 }
 
 
-/*void Bird()
+void Bird()
 {
     //Bird
-    glBegin(GL_LINES);
-    glColor3ub(0, 0 , 0);
-    glVertex2f(.9f, 0.89f);
-    glVertex2f(0.95f, 0.94f);
+    glTranslatef(position,0.0f, 0.0f);
+    glLineWidth(3.5);
+ glBegin(GL_LINES);
+ glColor3ub(0, 0, 0);
+glVertex2f(0.2f,0.9f);
+glVertex2f(0.25f,0.87f);
+glEnd();
 
-    glVertex2f(.7f, 0.87f);
-    glVertex2f(0.75f, 0.92f);
+glLineWidth(3.5);
+ glBegin(GL_LINES);
+ glColor3ub(0, 0, 0);
+glVertex2f(0.3f,0.9f);
+glVertex2f(0.25f,0.87f);
+glEnd();
 
-    glVertex2f(.4f, 0.90f);
-    glVertex2f(0.45f, 0.95f);
-    glEnd();
 
-}*/
+
+}
 
 
 void Cbuilding()
@@ -407,7 +412,7 @@ void Dbuilding()
         glVertex2f(0.44,0.4);
         glVertex2f(0.80,0.4);
         glEnd();
-
+//Gate1
         glBegin(GL_QUADS);
         glColor3ub(13,208,219);
         glVertex2f(0.60,0.01);
@@ -415,7 +420,7 @@ void Dbuilding()
         glVertex2f(0.65,0.4);
         glVertex2f(0.60,0.4);
         glEnd();
-
+//Gate 2
         glBegin(GL_QUADS);
         glColor3ub(13,208,219);
         glVertex2f(0.20,0.01);
@@ -873,17 +878,29 @@ int triangleAmount5 = 100;
 glEnd();
 
 }
+void Field()
+{
+     glBegin(GL_QUADS);
+    glColor3ub(0, 153, 0);
+    glVertex2f(-1.0,-1.0);
+    glVertex2f(1.0,-1.0);
+    glVertex2f(1.0,-0.5);
+    glVertex2f(-1.0,-0.5);
+    glEnd();
+}
 void display() {
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
    glClear(GL_COLOR_BUFFER_BIT);
    glPushMatrix();
   Background();
-  //Bird();
+
   Cbuilding();
   Sun();
 Dbuilding();
 Road();
+Field();
 CrossLine();
+Bird();
 Car();
 Train();
 
@@ -923,6 +940,7 @@ int main(int argc, char** argv) {
 
 
    glutTimerFunc(100, update, 0);
+  // glutTimerFunc(100, update1, 0);
 
    glutTimerFunc(100, update2, 0);
    glutKeyboardFunc(handleKeypress);
